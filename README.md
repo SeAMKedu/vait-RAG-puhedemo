@@ -13,7 +13,7 @@ Ratkaisu toimii mallien lataamisen jälkeen ilman pilvipalveluja. Käyttäjän p
 
 Pilotti on toteutettu osana **vAI:lla tuottavuutta?** -hanketta. Sen tarkoituksena on havainnollistaa, miten organisaation omia dokumentteja voidaan hyödyntää paikallisessa, puheohjattavassa tekoälysovelluksessa.
 
-> Tämä on teknologiapilotti ja esimerkkitoteutus. Koodia ei ole sellaisenaan tarkoitettu tuotantokriittiseen käyttöön.
+> Tämä on teknologiademo ja esimerkkitoteutus. Koodia ei ole sellaisenaan tarkoitettu tuotantokriittiseen käyttöön.
 
 ## Julkaisun historiatiedot
 
