@@ -1,15 +1,15 @@
 # Paikallinen puhe-RAG-demo
 
-Suomenkielinen puhedemo, jossa aanentunnistus, PDF-haku, vastausten generointi
-ja puhesynteesi tehdaan omalla koneella.
+Suomenkielinen puhedemo, jossa äänentunnistus, PDF-haku, vastausten generointi
+ja puhesynteesi tehdään omalla koneella.
 
 Normaali ajo on pakotettu offline-tilaan. Mallien lataaminen on erillinen,
-kayttajan tietoisesti kaynnistama vaihe. `tietokanta/`- ja `models/`-kansioita
-ei lisata Gitiin.
+käyttajän tietoisesti käynnistämä vaihe. `tietokanta/`- ja `models/`-kansioita
+ei lisätä Gitiin.
 
 ## Asennus
 
-Luo virtuaaliymparisto ja asenna riippuvuudet:
+Luo virtuaaliymparistö ja asenna riippuvuudet:
 
 ```powershell
 python -m venv .venv
@@ -27,10 +27,10 @@ Latauksen kokonaiskoko on noin 5 GB. Upotusmallista ladataan vain ohjelman
 tarvitsema PyTorch-versio; vaihtoehtoisia ONNX-, OpenVINO- ja TensorFlow-
 mallipainoja ei ladata.
 
-Lisaa omat PDF-tiedostot paikalliseen `tietokanta`-kansioon. Kansio luodaan
-automaattisesti ensimmaisessa ajossa, eika sita seurata Gitissa.
+Lisää omat PDF-tiedostot paikalliseen `tietokanta`-kansioon. Kansio luodaan
+automaattisesti ensimmäisessä ajossa, eika sitä seurata Gitissa.
 
-Kaynnista tämän jalkeen offline-ajo:
+Käynnistä tämän jälkeen offline-ajo:
 
 ```powershell
 python local_rag_puhedemo.py
@@ -40,14 +40,14 @@ Paina välilyöntiä kerran aloittaaksesi äänityksen. Paina välilyöntiä uud
 lopettaaksesi äänityksen ja käynnistääksesi kysymyksen käsittelyn. Lopeta
 ohjelma painamalla `q`.
 
-Arkaluonteiset litteroinnit ja haetut tekstikatkelmat eivat tulostu oletuksena.
+Litteroinnit ja haetut tekstikatkelmat eivat tulostu oletuksena.
 Paikalliseen vianhakuun ne saa nakyviin komennolla:
 
 ```powershell
 python local_rag_puhedemo.py --debug
 ```
 
-Mallien ja PDF-kansion sijainnin voi vaihtaa ilman lahdekoodin muokkaamista:
+Mallien ja PDF-kansion sijainnin voi vaihtaa ilman lähdekoodin muokkaamista:
 
 ```powershell
 $env:LOCAL_RAG_MODELS_DIR = "D:\mallit"
