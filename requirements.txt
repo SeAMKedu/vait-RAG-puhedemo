@@ -1,0 +1,13 @@
+accelerate>=0.26
+TTS==0.22.0
+faiss-cpu
+huggingface-hub
+numpy
+openai-whisper
+pynput
+PyPDF2
+sentence-transformers
+sounddevice
+soundfile
+torch
+transformers>=4.37
