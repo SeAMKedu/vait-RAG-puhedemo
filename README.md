@@ -18,7 +18,8 @@ Pilotti on toteutettu osana **vAI:lla tuottavuutta?** -hanketta. Sen tarkoitukse
 | Päivämäärä | Versio | Muutokset | Tekijä |
 |---|---:|---|---|
 | 20.11.2026 | 1.0 | Ensimmäinen julkaisu | Teemu Virtanen |
-| xx.xx.2026 | 1.1 | Mahdollinen Zenodo-julkaisu | Teemu Virtanen |
+| 20.11.2026 | 1.1 | Mallilatausten rajaaminen tarvittaviin tiedostoihin | Teemu Virtanen |
+| xx.xx.2026 | 1.2 | Mahdollinen Zenodo-julkaisu | Teemu Virtanen |
 
 ## Sisällysluettelo
 
@@ -184,6 +185,7 @@ Pilotissa toteutettiin:
 - erillinen mallien lataustila;
 - normaalin käytön offline-suojaus;
 - arkaluonteisten debug-tulosteiden poistaminen oletustilasta;
+- mallilatausten rajaaminen tarvittaviin tiedostoihin;
 - GitHub-julkaisua varten laadittu `.gitignore`.
 
 # Hakemistorakenne
@@ -208,11 +210,11 @@ Suositeltu Python-versio on **Python 3.10 tai 3.11**.
 
 Sovelluksen asentamiseen tarvitaan:
 
-- Python
-- Git
-- terminaali tai PowerShell
-- valinnaisesti Visual Studio Code
-- toimiva mikrofoni ja äänentoisto
+- Python;
+- Git;
+- terminaali tai PowerShell;
+- valinnaisesti Visual Studio Code;
+- toimiva mikrofoni ja äänentoisto.
 
 ## Windows
 
@@ -268,9 +270,22 @@ Komento lataa:
 - Whisper Medium -puheentunnistusmallin;
 - suomenkielisen Coqui TTS -puhesynteesimallin.
 
-Mallit tallennetaan oletuksena projektin paikalliseen `models/`-kansioon.
+Ladattavien mallien kokonaiskoko on noin **5 GB**.
 
-Mallien lataamisen jälkeen sovellusta voidaan käyttää ilman verkkoyhteyttä.
+Latauksen pääosat ovat:
+
+| Malli | Arvioitu latauskoko |
+|---|---:|
+| Qwen2.5-1.5B-Instruct | noin 2,9 GB |
+| Whisper Medium | noin 1,5 GB |
+| Sentence Transformers -embedding-malli | noin 500 MB |
+| Coqui TTS ja muut tiedostot | joitakin satoja megatavuja |
+
+Embedding-mallista ladataan vain ohjelman tarvitsema PyTorch-versio. Vaihtoehtoisia ONNX-, OpenVINO- ja TensorFlow-mallipainoja ei ladata.
+
+Latauksen tarkka koko voi muuttua hieman mallien julkaisijoiden tekemien päivitysten seurauksena.
+
+Mallit tallennetaan oletuksena projektin paikalliseen `models/`-kansioon. Mallien lataamisen jälkeen sovellusta voidaan käyttää ilman verkkoyhteyttä.
 
 > Ladattuja mallitiedostoja ei tule lisätä GitHubiin. Ne ovat suuria ja niiden käyttöä säätelevät mallikohtaiset lisenssit.
 
@@ -304,7 +319,7 @@ Käynnistä sovellus:
 python local_rag_puhedemo.py
 ```
 
-Kun mallit ja dokumentit on ladattu, ohjelma tulostaa:
+Kun mallit ja dokumentit on ladattu, ohjelma tulostaa esimerkiksi:
 
 ```text
 SUOMENKIELINEN PAIKALLINEN PUHE-RAG
@@ -409,6 +424,20 @@ python local_rag_puhedemo.py --download-models
 
 Mallien lataaminen tarvitsee verkkoyhteyden.
 
+## Vanha versio lataa tarpeettomia mallitiedostoja
+
+Aiempi latausversio saattoi ladata embedding-mallista myös ONNX-, OpenVINO- ja TensorFlow-versiot, jolloin latauksen koko kasvoi noin yhdeksään gigatavuun.
+
+Keskeytä vanha lataus tarvittaessa painamalla `Ctrl+C` ja suorita korjatulla koodilla:
+
+```powershell
+python local_rag_puhedemo.py --download-models
+```
+
+Korjattu lataus hyödyntää jo ladatut tarpeelliset tiedostot eikä lataa vaihtoehtoisia malliformaatteja.
+
+Vanhan latauksen tarpeettomat tiedostot voivat jäädä paikalliseen embedding-mallin kansioon. Niitä ei tarvita ohjelman suorittamiseen.
+
 ## PDF-tiedostoja ei löydy
 
 Varmista, että:
@@ -480,6 +509,8 @@ Suositus:
 - toimiva mikrofoni;
 - toimiva äänentoisto;
 - valinnainen NVIDIA GPU.
+
+Vaikka ladattavien mallien koko on noin 5 GB, virtuaaliympäristö, Python-kirjastot, väliaikaiset lataustiedostot ja mahdolliset välimuistit tarvitsevat lisää levytilaa. Tämän vuoksi noin 10 GB vapaata levytilaa on suositeltava vähimmäismäärä.
 
 GPU nopeuttaa Whisper-puheentunnistusta, embedding-laskentaa, kielimallin päättelyä ja puhesynteesiä. Sovellusta voidaan ajaa myös CPU:lla, mutta vastausten muodostaminen voi olla huomattavasti hitaampaa.
 
