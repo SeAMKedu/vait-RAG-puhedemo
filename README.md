@@ -296,8 +296,6 @@ Latauksen tarkka koko voi muuttua hieman mallien julkaisijoiden tekemien päivit
 
 Mallit tallennetaan oletuksena projektin paikalliseen `models/`-kansioon. Mallien lataamisen jälkeen sovellusta voidaan käyttää ilman verkkoyhteyttä.
 
-> Ladattuja mallitiedostoja ei tule lisätä GitHubiin. Ne ovat suuria ja niiden käyttöä säätelevät mallikohtaiset lisenssit.
-
 ## PDF-aineiston lisääminen
 
 Luo projektin juureen kansio:
