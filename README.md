@@ -640,4 +640,4 @@ Koodi ja dokumentaatio
 
 ## Vastuuvapauslauseke
 
-Tämä ohjelmisto on tutkimus-, kokeilu- ja demonstraatiokäyttöön tarkoitettu teknologiapilotti. Ohjelmiston tuottamat vastaukset voivat olla puutteellisia tai virheellisiä. Käyttäjän tulee tarkistaa olennaiset tiedot alkuperäisistä dokumenteista.
+Tämä ohjelmisto on tutkimus-, kokeilu- ja demonstraatiokäyttöön tarkoitettu teknologiademo. Ohjelmiston tuottamat vastaukset voivat olla puutteellisia tai virheellisiä. Käyttäjän tulee tarkistaa olennaiset tiedot alkuperäisistä dokumenteista.
